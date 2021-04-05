@@ -6,9 +6,10 @@ public partial class PlayerController : IOnStateMachine
 
     public enum BaseStates
     {
-        move_right = 2026400445,
+        idle_left = -1222159098,
+        idle_right = 504199673,
         move_left = 1947196380,
-        idle = -601574123,
+        move_right = 2026400445,
     }
 
     [Header("~@ States @~")]

@@ -19,8 +19,7 @@ public partial class PlayerController
 
         if (ground_hit.collider != null)
         {
-            move_axis = (playerManager.camera_input ? playerManager.input_rot : playerManager.grav_rot) * playerManager.left_axis;
-
+            move_axis = (playerManager.camera_input ? playerManager.camera_rot : playerManager.grav_rot) * playerManager.left_axis;
             playerManager.rigidbody.AddForce(Vector3.ProjectOnPlane(move_axis * playerManager.move_speed - playerManager.rigidbody.velocity, playerManager.physic_grav_n), ForceMode2D.Impulse);
         }
     }
