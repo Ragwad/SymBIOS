@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.U2D;
 
 public partial class PlayerManager
 {
     [Header("~@ Physics @~")]
     [Range(-360, 360)] public float physic_grav_a;
     [HideInInspector] public Vector2 rigidbody_pos, rigidbody_vlc, physic_grav_n;
-    [Min(0)] public float move_speed = 10, jump_force = 20, grav_force = 70;
+    [Min(0)] public float move_speed = 10, jump_force = 20, grav_force = 50;
 
     [HideInInspector] public Quaternion grav_rot;
 
