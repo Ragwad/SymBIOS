@@ -24,10 +24,10 @@ public partial class PlayerManager
 
         camera_pos += (Vector3)targetpos_sv2.value - camera_pivot.position;
 
-        camera_grav_a = Vector2.SignedAngle(Vector2.up, (Vector2)camera_pos - LevelManager.self.planet_pos);
+        camera_grav_a = Vector2.SignedAngle(Vector2.up, LevelManager.self.GetGravAtPoint(camera_pos));
         camera_grav_a = Mathf.MoveTowardsAngle(camera_grav_a, 0, Mathf.Min(Mathf.Abs(Mathf.Abs(camera_grav_a) - 180), camera_clamp));
 
-        camera_rot = camera_grav ? Quaternion.Euler(0, 0, camera_grav_a) : Quaternion.identity;
+        camera_rot = Quaternion.Euler(0, 0, camera_grav_a);
         camera.transform.SetPositionAndRotation(camera_pos, camera_rot);
     }
 }

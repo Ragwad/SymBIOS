@@ -44,14 +44,4 @@ public partial class PlayerManager : MonoBehaviour
         UpdateCamera();
         UpdateUI();
     }
-
-    //------------------------------------------------------------------------------------------------------------------------------
-
-    private void OnGUI()
-    {
-        int x = 15, y = 0;
-
-        GUI.Label(new Rect(x, y += 15, 250, 30), nameof(camera_grav) + " (" + camera_grav_key + " key) : " + (camera_grav ? "on" : "off"));
-        GUI.Label(new Rect(x, y += 15, 250, 30), nameof(camera_input) + " (" + camera_input_key + " key) : " + (camera_input ? "on" : "off"));
-    }
 }

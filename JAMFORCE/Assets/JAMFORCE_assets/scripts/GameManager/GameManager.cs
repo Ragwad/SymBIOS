@@ -14,6 +14,8 @@ public partial class GameManager : MonoBehaviour
 
     public static GameManager self;
 
+    [HideInInspector] public float _fixedDeltaTime, _deltaTime;
+
     //------------------------------------------------------------------------------------------------------------------------------
 
     private void Awake()
@@ -26,4 +28,14 @@ public partial class GameManager : MonoBehaviour
 
         self = this;
     }
+
+    //------------------------------------------------------------------------------------------------------------------------------
+
+    private void FixedUpdate() 
+        => _fixedDeltaTime = 1 / Time.fixedDeltaTime;
+
+    //------------------------------------------------------------------------------------------------------------------------------
+
+    private void Update() 
+        => _deltaTime = 1 / Time.deltaTime;
 }

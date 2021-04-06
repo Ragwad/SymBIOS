@@ -146,7 +146,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a150a1a2e5a919c4687d3d0dcb96f0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoot_force: 20
+  isGround: 0
+  groundHeight: 0
+  ground_range: 0.1
+  slide_ice: 0.03
+  slope: 1
+  slope_dot: 0
+  slope_range: {x: 0.5, y: 0.7}
+  isJumping: 0
+  jump_time: 0
+  shoot_force: 15
   shoot_lifetime: {x: 10, y: 15}
   state_base: 0
   playerManager: {fileID: 0}

@@ -25,7 +25,7 @@ public partial class PhysicProp2D : MonoBehaviour
     public void OnFixedUpdate()
     {
         rigidbody_pos = rigidbody.position;
-        grav_n = (rigidbody_pos - LevelManager.self.planet_pos).normalized;
+        grav_n = LevelManager.self.GetGravAtPoint(rigidbody_pos);
 
         rigidbody.AddForce(grav_force * -grav_n * rigidbody.mass, ForceMode2D.Force);
     }

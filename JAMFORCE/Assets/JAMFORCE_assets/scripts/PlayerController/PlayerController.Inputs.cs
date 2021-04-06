@@ -4,8 +4,8 @@ public partial class PlayerController
 {
     void UpdateInputs()
     {
-        if (ground_hit.collider && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0)))
-            playerManager.rigidbody.AddForce(playerManager.physic_grav_n * playerManager.jump_force * playerManager.rigidbody.mass, ForceMode2D.Impulse);
+        if (!isJumping && ground_hit.collider && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0)))
+            Jump();
 
         Vector2 axis = Quaternion.Inverse(playerManager.grav_rot) * move_axis;
 

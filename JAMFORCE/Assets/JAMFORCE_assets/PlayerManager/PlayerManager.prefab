@@ -99,7 +99,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920153342851828407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 30}
+  m_LocalPosition: {x: 0, y: -1.5, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6393557741537165745}
@@ -182,17 +182,16 @@ MonoBehaviour:
   camera_clamp: 30
   camera_rot: {x: 0, y: 0, z: 0, w: 0}
   left_axis: {x: 0, y: 0}
-  camera_grav: 1
-  camera_input: 0
   mouse_pos: {x: 0, y: 0}
   mouse_to: {x: 0, y: 0}
   physic_grav_a: 0
-  rigidbody_pos: {x: 0, y: 0}
-  rigidbody_vlc: {x: 0, y: 0}
-  physic_grav_n: {x: 0, y: 0}
   move_speed: 10
   jump_force: 20
-  grav_force: 70
+  grav_force: 55
+  rigidbody_pos: {x: 0, y: 0}
+  rigidbody_vlc: {x: 0, y: 0}
+  rigidbody_lcl_vlc: {x: 0, y: 0}
+  physic_grav_n: {x: 0, y: 0}
   grav_rot: {x: 0, y: 0, z: 0, w: 0}
   state_base: 0
   animator: {fileID: 0}
@@ -298,8 +297,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.25}
-  m_Size: {x: 2, y: 2.5}
+  m_Offset: {x: 0, y: 1.3}
+  m_Size: {x: 2, y: 2.4}
   m_Direction: 0
 --- !u!1 &3451427213644934311
 GameObject:
@@ -366,7 +365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3829865711124247646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -50}
+  m_LocalPosition: {x: 0, y: 1.5, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3342660428956212919}
@@ -396,15 +395,15 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 1
+  far clip plane: 100
   field of view: 15
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 117
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
