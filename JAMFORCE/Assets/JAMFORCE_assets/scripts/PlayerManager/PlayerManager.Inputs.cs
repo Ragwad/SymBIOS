@@ -3,7 +3,8 @@
 public partial class PlayerManager
 {
     [Header("~@ Inputs @~")]
-    public Vector2 left_axis;
+    [Range(-1, 1)] public float left_axis;
+    public bool jump_down, jump_hold;
     public Vector2 mouse_pos, mouse_to;
 
     //------------------------------------------------------------------------------------------------------------------------------
@@ -27,6 +28,9 @@ public partial class PlayerManager
         mouse_pos.x /= Screen.width;
         mouse_pos.y /= Screen.height;
 
-        left_axis = Vector2.ClampMagnitude(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")), 1);
+        left_axis = Input.GetAxisRaw("Horizontal");
+
+        jump_down = Input.GetKeyDown(json.jump_keyboard) || Input.GetKeyDown(json.jump_gamepad);
+        jump_hold = Input.GetKey(json.jump_keyboard) || Input.GetKey(json.jump_gamepad);
     }
 }

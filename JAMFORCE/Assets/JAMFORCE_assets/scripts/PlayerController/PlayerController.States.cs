@@ -6,13 +6,22 @@ public partial class PlayerController : IOnStateMachine
 
     public enum BaseStates
     {
-        idle_left = -1222159098,
-        idle_right = 504199673,
-        move_left = 1947196380,
-        move_right = 2026400445,
+        Move = 1326225478,
+        Idle = 2081823275,
+        JumpUp = 608663733,
+        Fly = 1808254291,
+        JumpDown = -1289821550,
+        Power = 1783312036,
+        PowerDown = -218250187,
+    }
+
+    public enum Parameters
+    {
+        aim_a = 1674008911,
     }
 
     [Header("~@ States @~")]
+    public float state_last;
     public BaseStates state_base;
 
     //------------------------------------------------------------------------------------------------------------------------------
@@ -30,5 +39,8 @@ public partial class PlayerController : IOnStateMachine
                 }
                 break;
         }
+
+        if (onEnter)
+            state_last = Time.time;
     }
 }

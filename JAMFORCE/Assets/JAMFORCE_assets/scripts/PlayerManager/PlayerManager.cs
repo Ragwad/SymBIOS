@@ -2,10 +2,19 @@ using UnityEngine;
 
 public partial class PlayerManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class Settings : JSon
+    {
+        public KeyCode jump_gamepad = KeyCode.JoystickButton0, jump_keyboard = KeyCode.Space;
+    }
+
     [HideInInspector] public Animator animator;
     [HideInInspector] public new Rigidbody2D rigidbody;
     [HideInInspector] public new CapsuleCollider2D collider;
     [HideInInspector] public PlayerController player;
+
+    [Header("~@ Player @~")]
+    public Settings json;
 
     //------------------------------------------------------------------------------------------------------------------------------
 
@@ -20,6 +29,14 @@ public partial class PlayerManager : MonoBehaviour
         player_pivot = transform.Find("PhysicBody/CameraPivot");
 
         InitUI();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+            JSon.Read("Player.settings", ref json);
     }
 
     //------------------------------------------------------------------------------------------------------------------------------

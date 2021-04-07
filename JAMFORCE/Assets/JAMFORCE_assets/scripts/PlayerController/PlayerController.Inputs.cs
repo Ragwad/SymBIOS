@@ -2,32 +2,82 @@
 
 public partial class PlayerController
 {
+    [Header("~@ Inputs @~")]
+    [SerializeField] bool lead_wind;
+    [SerializeField] int jumps;
+    [SerializeField] TowardFloat side_f = new TowardFloat(1);
+
+    //------------------------------------------------------------------------------------------------------------------------------
+
     void UpdateInputs()
     {
-        if (!isJumping && ground_hit.collider && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0)))
-            Jump();
-
-        Vector2 axis = Quaternion.Inverse(playerManager.grav_rot) * move_axis;
-
-        if (axis.x > .3f)
+        if (state_base == BaseStates.Power)
         {
-            if (state_base != BaseStates.move_right)
-                animator.CrossFadeInFixedTime((int)BaseStates.move_right, state_base == BaseStates.idle_right ? 0 : .1f, (int)Layers.Base, .1f);
-        }
-        else if (axis.x < -.3f)
-        {
-            if (state_base != BaseStates.move_left)
-                animator.CrossFadeInFixedTime((int)BaseStates.move_left, state_base == BaseStates.idle_left ? 0 : .1f, (int)Layers.Base, .1f);
+            float aim_a = Vector2.SignedAngle(playerManager.physic_grav_n, playerManager.mouse_to);
+            side_f.target = side_f.value = aim_a > 0 ? -1 : 1;
+            animator.SetFloat((int)Parameters.aim_a, Mathf.Abs(aim_a));
         }
         else
         {
-            if (state_base == BaseStates.move_left)
-                animator.CrossFadeInFixedTime((int)BaseStates.idle_left, 0, (int)Layers.Base);
-            else if (state_base == BaseStates.move_right)
-                animator.CrossFadeInFixedTime((int)BaseStates.idle_right, 0, (int)Layers.Base);
+            if (Mathf.Abs(playerManager.left_axis) > .2f)
+            {
+                if (isGround && state_base != BaseStates.Move)
+                    animator.Play((int)BaseStates.Move, (int)Layers.Base);
+
+                if (playerManager.left_axis < -.2f)
+                    side_f.target = -1;
+                else if (playerManager.left_axis > .2f)
+                    side_f.target = 1;
+            }
+            else if (state_base == BaseStates.Move)
+                animator.Play((int)BaseStates.Idle, (int)Layers.Base);
+
+
+            if (playerManager.jump_down && Time.time > jump_time)
+                switch (state_base)
+                {
+                    case BaseStates.Move:
+                    case BaseStates.Idle:
+                    case BaseStates.Power:
+                        if (isGround)
+                        {
+                            jump_time = Time.time + .1f;
+                            jumps = 1;
+
+                            playerManager.rigidbody.AddForce(playerManager.physic_grav_n * json.jump1_force * playerManager.rigidbody.mass, ForceMode2D.Impulse);
+
+                            animator.CrossFadeInFixedTime((int)BaseStates.JumpUp, 0, (int)Layers.Base);
+                        }
+                        break;
+
+                    case BaseStates.JumpUp:
+                    case BaseStates.JumpDown:
+                        if (lead_wind && jumps > 0)
+                        {
+                            jump_time = Time.time + .1f;
+                            jumps = 0;
+
+                            playerManager.rigidbody.AddForce(playerManager.physic_grav_n * json.jump2_force * playerManager.rigidbody.mass, ForceMode2D.Impulse);
+                        }
+                        break;
+                }
         }
 
-        if (playerManager.mouse_to.sqrMagnitude > 0 && Input.GetKeyDown(KeyCode.Mouse0))
-            Shoot();
+        if (side_f.Towards(json.side_speed, Time.deltaTime, false) || true)
+            transforms[(int)Transforms.pivot_render].localScale = new Vector3(side_f.value, 1, 1);
+
+        if (isGround && playerManager.mouse_to.sqrMagnitude > 0 && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (state_base != BaseStates.Power)
+                animator.CrossFadeInFixedTime((int)BaseStates.Power, 0, (int)Layers.Base);
+
+            Vector2 impulse = playerManager.camera_rot * playerManager.mouse_to;
+
+            var clone = Instantiate(projectile, playerManager.targetpos_sv2.target + 2 * impulse, Quaternion.identity).GetComponent<Rigidbody2D>();
+
+            clone.velocity = json.shoot_force * impulse + .5f * playerManager.rigidbody_vlc;
+
+            Destroy(clone.gameObject, Random.Range(json.shoot_lifetime_min, json.shoot_lifetime_max));
+        }
     }
 }

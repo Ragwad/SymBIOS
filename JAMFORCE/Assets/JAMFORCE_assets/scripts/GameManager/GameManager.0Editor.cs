@@ -3,6 +3,13 @@ using UnityEngine;
 
 public partial class GameManager
 {
+    [ContextMenu(nameof(OnValidate))]
+    private void OnValidate()
+    {
+        if (Application.isPlaying && !string.IsNullOrWhiteSpace(json.name))
+            json.Save();
+    }
+
     [ContextMenu(nameof(Getlayers))]
     void Getlayers()
     {

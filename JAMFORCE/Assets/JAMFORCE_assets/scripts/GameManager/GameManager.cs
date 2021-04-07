@@ -12,9 +12,18 @@ public partial class GameManager : MonoBehaviour
         player = 6,
     }
 
+    [System.Serializable]
+    public class Settings : JSon
+    {
+
+    }
+
     public static GameManager self;
 
     [HideInInspector] public float _fixedDeltaTime, _deltaTime;
+
+    [Header("~@ Game @~")]
+    public Settings json;
 
     //------------------------------------------------------------------------------------------------------------------------------
 
@@ -27,6 +36,14 @@ public partial class GameManager : MonoBehaviour
         }
 
         self = this;
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+            JSon.Read("Game.settings", ref json);
     }
 
     //------------------------------------------------------------------------------------------------------------------------------

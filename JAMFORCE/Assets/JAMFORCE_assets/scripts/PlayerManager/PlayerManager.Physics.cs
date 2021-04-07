@@ -4,7 +4,6 @@ public partial class PlayerManager
 {
     [Header("~@ Physics @~")]
     [Range(-180, 180)] public float physic_grav_a;
-    [Min(0)] public float move_speed = 10, jump_force = 20, grav_force = 55;
 
     [HideInInspector] public Vector2 rigidbody_pos, rigidbody_vlc, rigidbody_lcl_vlc, physic_grav_n;
     [HideInInspector] public Quaternion grav_rot;
