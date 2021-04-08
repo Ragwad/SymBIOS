@@ -77,8 +77,11 @@ public partial class PlayerController
                 break;
 
             case BaseStates.JumpDown:
-                if (playerManager.jump_hold && playerManager.rigidbody_lcl_vlc.y < 0)
+                if (lead_wind.value && playerManager.jump_hold && playerManager.rigidbody_lcl_vlc.y < 0)
+                {
                     animator.CrossFadeInFixedTime((int)BaseStates.Fly, 0, (int)Layers.Base);
+                    playerManager.animator.CrossFadeInFixedTime((int)PlayerManager.JellyStates.Jump, 0, (int)PlayerManager.Layers.Jelly);
+                }
                 else
                     goto case BaseStates.JumpUp;
                 break;

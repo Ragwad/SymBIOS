@@ -3,7 +3,7 @@
 public partial class PlayerController
 {
     [Header("~@ Inputs @~")]
-    [SerializeField] bool lead_wind;
+    [SerializeField] OnValue<bool> lead_wind;
     [SerializeField] int jumps;
     [SerializeField] TowardFloat side_f = new TowardFloat(1);
 
@@ -33,12 +33,7 @@ public partial class PlayerController
                 animator.Play((int)BaseStates.Idle, (int)Layers.Base);
 
             if (Util.OnKeysDown(playerManager.json.switch_keyboard, playerManager.json.switch_gamepad))
-            {
-                playerManager.animator.CrossFadeInFixedTime((int)PlayerManager.JellyStates.Jump, 0, (int)PlayerManager.Layers.Jelly);
-
-                lead_wind = !lead_wind;
-                animator.SetFloat((int)Parameters.wind_f, lead_wind ? 1 : 0);
-            }
+                lead_wind.OnChange(!lead_wind.value);
 
             if (playerManager.jump_down && Time.time > jump_time)
             {
@@ -63,7 +58,7 @@ public partial class PlayerController
 
                     case BaseStates.JumpUp:
                     case BaseStates.JumpDown:
-                        if (lead_wind && jumps > 0)
+                        if (lead_wind.value && jumps > 0)
                         {
                             AudioJump();
                             playerManager.animator.CrossFadeInFixedTime((int)PlayerManager.JellyStates.Jump, 0, (int)PlayerManager.Layers.Jelly);
@@ -90,18 +85,25 @@ public partial class PlayerController
         if (side_f.Towards(json.side_speed, Time.deltaTime, false) || true)
             transforms[(int)Transforms.pivot_render].localScale = new Vector3(side_f.value, 1, 1);
 
-        if (isGround && playerManager.mouse_to.sqrMagnitude > 0 && Input.GetKeyDown(KeyCode.Mouse0))
+        if (isGround && Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (state_base != BaseStates.Power)
                 animator.CrossFadeInFixedTime((int)BaseStates.Power, 0, (int)Layers.Base);
 
-            Vector2 impulse = playerManager.camera_rot * playerManager.mouse_to;
+            if (lead_wind.value)
+            {
 
-            var clone = Instantiate(projectile, playerManager.targetpos_sv2.target + 2 * impulse, Quaternion.identity).GetComponent<Rigidbody2D>();
+            }
+            else if (playerManager.mouse_to.sqrMagnitude > 0)
+            {
+                Vector2 impulse = playerManager.camera_rot * playerManager.mouse_to;
 
-            clone.velocity = json.shoot_force * impulse + .5f * playerManager.rigidbody_vlc;
+                var clone = Instantiate(projectile, playerManager.targetpos_sv2.target + 2 * impulse, Quaternion.identity).GetComponent<Rigidbody2D>();
 
-            Destroy(clone.gameObject, Random.Range(json.shoot_lifetime_min, json.shoot_lifetime_max));
+                clone.velocity = json.shoot_force * impulse + .5f * playerManager.rigidbody_vlc;
+
+                Destroy(clone.gameObject, Random.Range(json.shoot_lifetime_min, json.shoot_lifetime_max));
+            }
         }
     }
 }

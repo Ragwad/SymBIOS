@@ -14,6 +14,7 @@ public partial class PlayerManager : IOnStateMachine
     {
         Default = 753088835,
         Jump = 125937960,
+        Switch = 1749372462,
     }
 
     [Header("~@ States @~")]

@@ -55,6 +55,11 @@ public partial class GameManager : MonoBehaviour
 
     //------------------------------------------------------------------------------------------------------------------------------
 
-    private void Update() 
-        => _deltaTime = 1 / Time.deltaTime;
+    private void Update()
+    {
+        _deltaTime = 1 / Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.T))
+            Time.timeScale = Time.timeScale > .5f ? .2f : 1;
+    }
 }

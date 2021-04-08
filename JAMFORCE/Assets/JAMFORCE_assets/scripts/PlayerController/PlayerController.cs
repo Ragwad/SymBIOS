@@ -21,6 +21,12 @@ public partial class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         transforms[(int)Transforms.pivot_render] = transform.Find("render pivot");
+
+        lead_wind = new OnValue<bool>(true, delegate (bool value)
+        {
+            animator.SetFloat((int)Parameters.wind_f, value ? 1 : 0);
+            playerManager.animator.CrossFadeInFixedTime((int)PlayerManager.JellyStates.Switch, 0, (int)PlayerManager.Layers.Jelly);
+        });
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
