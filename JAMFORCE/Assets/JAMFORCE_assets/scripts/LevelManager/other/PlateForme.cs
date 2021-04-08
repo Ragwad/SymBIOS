@@ -19,9 +19,13 @@ public class PlateForme : LevelProp
     private void Setup()
     {
         var p = new GameObject(name).transform;
+
         p.SetParent(transform.parent, false);
         p.SetPositionAndRotation(transform.position, transform.rotation);
+
         transform.SetParent(p, false);
+        transform.localPosition = default;
+        transform.localRotation = default;
 
         A = Setup("A");
         B = Setup("B");
@@ -29,8 +33,11 @@ public class PlateForme : LevelProp
         Transform Setup(string name)
         {
             var T = new GameObject(name).transform;
+
             T.SetParent(p, false);
-            T.SetPositionAndRotation(transform.position, transform.rotation);
+            T.localPosition = default;
+            T.localRotation = default;
+
             return T;
         }
     }

@@ -36,6 +36,8 @@ public partial class GameManager : MonoBehaviour
         }
 
         self = this;
+
+        Physics2D.queriesHitTriggers = false;
     }
 
     //------------------------------------------------------------------------------------------------------------------------------

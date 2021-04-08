@@ -32,6 +32,13 @@ public partial class PlayerController
             else if (state_base == BaseStates.Move)
                 animator.Play((int)BaseStates.Idle, (int)Layers.Base);
 
+            if (Util.OnKeysDown(playerManager.json.switch_keyboard, playerManager.json.switch_gamepad))
+            {
+                playerManager.animator.CrossFadeInFixedTime((int)PlayerManager.JellyStates.Jump, 0, (int)PlayerManager.Layers.Jelly);
+
+                lead_wind = !lead_wind;
+                animator.SetFloat((int)Parameters.wind_f, lead_wind ? 1 : 0);
+            }
 
             if (playerManager.jump_down && Time.time > jump_time)
             {
@@ -43,6 +50,7 @@ public partial class PlayerController
                         if (isGround)
                         {
                             AudioJump();
+                            playerManager.animator.CrossFadeInFixedTime((int)PlayerManager.JellyStates.Jump, 0, (int)PlayerManager.Layers.Jelly);
 
                             jump_time = Time.time + .1f;
                             jumps = 1;
@@ -58,6 +66,7 @@ public partial class PlayerController
                         if (lead_wind && jumps > 0)
                         {
                             AudioJump();
+                            playerManager.animator.CrossFadeInFixedTime((int)PlayerManager.JellyStates.Jump, 0, (int)PlayerManager.Layers.Jelly);
 
                             jump_time = Time.time + .1f;
                             jumps = 0;

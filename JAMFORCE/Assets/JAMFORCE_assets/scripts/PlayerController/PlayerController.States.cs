@@ -18,6 +18,7 @@ public partial class PlayerController : IOnStateMachine
     public enum Parameters
     {
         aim_a = 1674008911,
+        wind_f = 1041428444,
     }
 
     [Header("~@ States @~")]

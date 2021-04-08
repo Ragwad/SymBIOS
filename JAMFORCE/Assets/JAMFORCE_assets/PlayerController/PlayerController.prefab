@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4cf232a0f3ffb2f4cad3fdb6ced4044e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb043a48062a71a4795c3299b1497036, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -155,7 +155,6 @@ MonoBehaviour:
   isGround: 0
   groundHeight: 0
   ground_range: 0.1
-  ground_collider: {fileID: 0}
   ground_dot: 0
   move_weight: 0
   slope_weight: 0

@@ -2,12 +2,18 @@
 
 public partial class PlayerManager : IOnStateMachine
 {
-    public enum Layers { Base, }
+    public enum Layers { Base, Jelly, }
 
     public enum BaseStates
     {
         Default = 753088835,
         Power = 1783312036,
+    }
+
+    public enum JellyStates
+    {
+        Default = 753088835,
+        Jump = 125937960,
     }
 
     [Header("~@ States @~")]
