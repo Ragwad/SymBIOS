@@ -21,6 +21,7 @@ public partial class PlayerManager : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        listener = transform.Find("AudioListener").GetComponent<AudioListener>();
         camera = transform.Find("PlayerCamera").GetComponent<Camera>();
         camera_pivot = camera.transform.Find("Pivot");
         rigidbody = transform.Find("PhysicBody").GetComponent<Rigidbody2D>();
@@ -29,6 +30,7 @@ public partial class PlayerManager : MonoBehaviour
         player_pivot = transform.Find("PhysicBody/CameraPivot");
 
         InitUI();
+        InitAudio();
     }
 
     //------------------------------------------------------------------------------------------------------------------------------

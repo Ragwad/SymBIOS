@@ -43,3 +43,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549370f1acf76b945991854d4985c749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grass_steps:
+  - {fileID: 8300000, guid: 98a2a1dc614c02440aad3d927c10d36d, type: 3}
+  - {fileID: 8300000, guid: 169ba3f1004a5964290b005a9d7eebfb, type: 3}
+  - {fileID: 8300000, guid: a84bea0b6f18eeb45be1a341ac4245a8, type: 3}
+  - {fileID: 8300000, guid: 22b94520b1b04144caca3c866635a5df, type: 3}
+  - {fileID: 8300000, guid: 90de1c9a9c53c0d41910d5086f175e6c, type: 3}
+  - {fileID: 8300000, guid: f155abcadadc0084dbac50f327d51fa3, type: 3}
+  - {fileID: 8300000, guid: 78c91701d8bb54442bef323c3b61c319, type: 3}
+  - {fileID: 8300000, guid: 9ec430322c69168499cc3cd3c198d49b, type: 3}
+  clips_jump:
+  - {fileID: 8300000, guid: e57f11b812aa4924b8370042c5e88065, type: 3}
+  - {fileID: 8300000, guid: 05d3246246bcda94799f08e3aca90021, type: 3}
+  - {fileID: 8300000, guid: 9572678097e93e84fa56a9a9cdefd197, type: 3}
+  - {fileID: 8300000, guid: ccaf1f7a987c8954fbf0cc39298b2a09, type: 3}
+  clips_opencape:
+  - {fileID: 8300000, guid: 99a4b0e3b209ddc4c9e240849c5dba35, type: 3}
+  - {fileID: 8300000, guid: 3331fb7c3c3d4a04ea9504afef657b12, type: 3}
+  - {fileID: 8300000, guid: d9d462df338271f47a0177f421f9adee, type: 3}
+  _fixedDeltaTime: 0
+  _deltaTime: 0
+  json:
+    name: 

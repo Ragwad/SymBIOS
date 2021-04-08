@@ -11,7 +11,6 @@ public partial class PlayerController
     [SerializeField] float ground_range = .1f;
 
     public RaycastHit2D ground_hit;
-    [SerializeField] Collider2D ground_collider;
 
     [Header("~ Slide ~")]
     [Range(-1, 1)] [SerializeField] float ground_dot;
@@ -32,8 +31,6 @@ public partial class PlayerController
                 playerManager.collider.size.x, // distance
                 ground_mask // layers
                 );
-
-            ground_collider = ground_hit.collider;
 
             if (ground_hit.collider != null)
             {
@@ -104,18 +101,19 @@ public partial class PlayerController
         }
 
         Vector2 force = default;
+        Vector2 vlc = isGround && ground_hit.rigidbody != null && !ground_hit.rigidbody.isKinematic ? ground_hit.rigidbody.GetPointVelocity(playerManager.rigidbody_pos) : default;
 
         if (move_weight > 0)
-            force += GameManager.self._fixedDeltaTime * move_weight * (move_axis * json.move_speed - (Vector2)Vector3.ProjectOnPlane(playerManager.rigidbody_vlc, playerManager.physic_grav_n));
+            force += GameManager.self._fixedDeltaTime * move_weight * (move_axis * json.move_speed - (Vector2)Vector3.ProjectOnPlane(playerManager.rigidbody_vlc - vlc, playerManager.physic_grav_n));
 
         if (isGround)
-            force += (1 - slope_weight) * GameManager.self._fixedDeltaTime * playerManager.physic_grav_n * (GameManager.self._fixedDeltaTime * groundHeight - playerManager.rigidbody_lcl_vlc.y);
+            force += (1 - slope_weight) * GameManager.self._fixedDeltaTime * playerManager.physic_grav_n * (GameManager.self._fixedDeltaTime * groundHeight - (Quaternion.Inverse(playerManager.grav_rot) * (playerManager.rigidbody_vlc - vlc)).y);
 
         switch (state_base)
         {
             case BaseStates.Fly:
-                if (playerManager.rigidbody_lcl_vlc.y < 0)
-                    force += playerManager.physic_grav_n * json.fly_force * (-json.fly_speed * playerManager.rigidbody_lcl_vlc.y);
+                if (playerManager.rigidbody_lcl_vlc.y < -json.fly_speed)
+                    force += GameManager.self._fixedDeltaTime * playerManager.physic_grav_n * json.fly_force * (-json.fly_speed * playerManager.rigidbody_lcl_vlc.y);
                 break;
 
             default:

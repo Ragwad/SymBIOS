@@ -34,6 +34,7 @@ public partial class PlayerController
 
 
             if (playerManager.jump_down && Time.time > jump_time)
+            {
                 switch (state_base)
                 {
                     case BaseStates.Move:
@@ -41,6 +42,8 @@ public partial class PlayerController
                     case BaseStates.Power:
                         if (isGround)
                         {
+                            AudioJump();
+
                             jump_time = Time.time + .1f;
                             jumps = 1;
 
@@ -54,6 +57,8 @@ public partial class PlayerController
                     case BaseStates.JumpDown:
                         if (lead_wind && jumps > 0)
                         {
+                            AudioJump();
+
                             jump_time = Time.time + .1f;
                             jumps = 0;
 
@@ -61,6 +66,16 @@ public partial class PlayerController
                         }
                         break;
                 }
+
+                void AudioJump()
+                {
+                    AudioSource source = playerManager.sources[(int)PlayerManager.AudioSources.air];
+
+                    source.clip = GameManager.self.clips_jump[Random.Range(0, GameManager.self.clips_jump.Length)];
+                    source.Stop();
+                    source.Play();
+                }
+            }
         }
 
         if (side_f.Towards(json.side_speed, Time.deltaTime, false) || true)

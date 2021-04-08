@@ -26,6 +26,28 @@ public partial class PlayerController : IOnStateMachine
 
     //------------------------------------------------------------------------------------------------------------------------------
 
+    void OnAnimatorEvent(AnimationEvent e)
+    {
+        switch (e.stringParameter)
+        {
+            case "step":
+                {
+                    AudioSource source = playerManager.sources[(int)PlayerManager.AudioSources.steps];
+
+                    source.clip = GameManager.self.grass_steps[Random.Range(0, GameManager.self.grass_steps.Length)];
+                    source.Stop();
+                    source.Play();
+                }
+                break;
+
+            default:
+                print("error: " + e.stringParameter);
+                break;
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------
+
     void IOnStateMachine.OnStateMachine(AnimatorStateInfo stateInfo, int layerIndex, bool onEnter)
     {
         switch ((Layers)layerIndex)
@@ -33,6 +55,19 @@ public partial class PlayerController : IOnStateMachine
             case Layers.Base:
                 {
                     var state = (BaseStates)stateInfo.shortNameHash;
+
+                    switch (state)
+                    {
+                        case BaseStates.Fly:
+                            if (onEnter)
+                            {
+                                GameManager.self.PlayAudio(playerManager.sources[(int)PlayerManager.AudioSources.air], GameManager.self.clips_opencape);
+                                playerManager.sources[(int)PlayerManager.AudioSources.cape].Play();
+                            }
+                            else
+                                playerManager.sources[(int)PlayerManager.AudioSources.cape].Stop();
+                            break;
+                    }
 
                     if (onEnter)
                         state_base = state;

@@ -15,10 +15,15 @@ public abstract class JSon
         {
             json = JsonUtility.FromJson<T>(File.ReadAllText(path));
             json.name = name;
+            json.Save();
             return true;
         }
         else
+        {
+            json.name = name;
+            json.Save();
             return false;
+        }
     }
 
     public void Save()

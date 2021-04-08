@@ -22,7 +22,7 @@ public partial class LevelManager : MonoBehaviour
         if (planet != null)
             planet_pos = planet.position;
 
-        foreach (var prop in PhysicProp2D.selves)
+        foreach (var prop in LevelProp.selves)
             prop.OnFixedUpdate();
     }
 

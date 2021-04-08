@@ -3,6 +3,7 @@
 public partial class PlayerManager
 {
     [HideInInspector] public new Camera camera;
+    [HideInInspector] public AudioListener listener;
     [HideInInspector] public Transform camera_pivot, player_pivot;
 
     [Header("~@ Camera @~")]
@@ -29,5 +30,10 @@ public partial class PlayerManager
 
         camera_rot = Quaternion.Euler(0, 0, camera_grav_a);
         camera.transform.SetPositionAndRotation(camera_pos, camera_rot);
+
+        float a = Vector3.Angle(Vector3.forward, camera_rot * Vector3.forward);
+        float tan = Mathf.Tan(a * Mathf.Deg2Rad);
+        float dst = tan * -camera_pos.z;
+        listener.transform.position = camera_pos + camera_rot * Vector3.forward * Mathf.Pow(dst * dst + camera_pos.z * camera_pos.z, .5f);
     }
 }

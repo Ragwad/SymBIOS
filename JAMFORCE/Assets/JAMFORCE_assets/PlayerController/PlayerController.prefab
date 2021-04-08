@@ -146,20 +146,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a150a1a2e5a919c4687d3d0dcb96f0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lead_wind: 0
+  jumps: 0
+  side_f:
+    value: 1
+    target: 1
+  jump_time: 0
   isGround: 0
   groundHeight: 0
   ground_range: 0.1
-  slide_ice: 0.03
-  slope: 1
-  slope_dot: 0
-  slope_range: {x: 0.5, y: 0.7}
-  isJumping: 0
-  jump_time: 0
-  shoot_force: 15
-  shoot_lifetime: {x: 10, y: 15}
+  ground_collider: {fileID: 0}
+  ground_dot: 0
+  move_weight: 0
+  slope_weight: 0
+  state_last: 0
   state_base: 0
   playerManager: {fileID: 0}
   animator: {fileID: 0}
+  json:
+    name: 
+    slide_default: 0.25
+    slide_ice: 0.3
+    slide_air: 0.1
+    slope_range_min: 0.5
+    slope_range_max: 0.7
+    move_speed: 10
+    side_speed: 10
+    jump1_force: 20
+    jump2_force: 10
+    fly_speed: 1
+    fly_force: 0.1
+    grav_force: 55
+    shoot_force: 15
+    shoot_lifetime_min: 10
+    shoot_lifetime_max: 15
   projectile: {fileID: 7271283755171384728, guid: 0a74a2a5d5b11c547bf09371e9ff5e05, type: 3}
 --- !u!1 &6598500798550928904
 GameObject:
