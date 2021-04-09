@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public partial class GameManager : MonoBehaviour
+public partial class GameManager : ControllerBehaviour
 {
     public enum UserLayers
     {
@@ -29,6 +29,8 @@ public partial class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        OnAwake();
+
         if (self != null && self != this)
         {
             Destroy(gameObject);
@@ -38,6 +40,8 @@ public partial class GameManager : MonoBehaviour
         self = this;
 
         Physics2D.queriesHitTriggers = false;
+
+        InitUI();
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
@@ -61,5 +65,7 @@ public partial class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
             Time.timeScale = Time.timeScale > .5f ? .2f : 1;
+
+        UpdateInputs();
     }
 }

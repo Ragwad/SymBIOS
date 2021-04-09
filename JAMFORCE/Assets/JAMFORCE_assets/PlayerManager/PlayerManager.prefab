@@ -481,6 +481,12 @@ MonoBehaviour:
   jump_hold: 0
   mouse_pos: {x: 0, y: 0}
   mouse_to: {x: 0, y: 0}
+  json:
+    name: 
+    jump_keyboard: 32
+    jump_gamepad: 330
+    switch_keyboard: 97
+    switch_gamepad: 334
   physic_grav_a: 0
   rigidbody_pos: {x: 0, y: 0}
   rigidbody_vlc: {x: 0, y: 0}
@@ -492,10 +498,6 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   collider: {fileID: 0}
   player: {fileID: 0}
-  json:
-    name: 
-    jump_gamepad: 330
-    jump_keyboard: 32
 --- !u!1 &3244341932241606304
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7667647159964380824
 RectTransform:
   m_ObjectHideFlags: 0

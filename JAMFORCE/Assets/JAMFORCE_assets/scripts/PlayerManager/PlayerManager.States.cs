@@ -7,7 +7,7 @@ public partial class PlayerManager : IOnStateMachine
     public enum BaseStates
     {
         Default = 753088835,
-        Power = 1783312036,
+        Aim = 153482222,
     }
 
     public enum JellyStates

@@ -21,7 +21,7 @@ public class OnValue<T> where T : struct
 
     //------------------------------------------------------------------------------------------------------------------------------
 
-    public void OnChange(T value)
+    public void UpdateValue(T value)
     {
         if (!value.Equals(this.value))
             onChange(value);

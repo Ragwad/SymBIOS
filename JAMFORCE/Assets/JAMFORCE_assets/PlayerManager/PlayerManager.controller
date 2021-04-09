@@ -47,7 +47,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Power
+  m_Name: Aim
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -294,7 +294,7 @@ AnimatorStateMachine:
     m_Position: {x: 249.52005, y: 20.496155, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7139268075380228921}
-    m_Position: {x: 442.92123, y: 95.361145, z: 0}
+    m_Position: {x: 440, y: 100, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

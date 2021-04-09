@@ -18,6 +18,6 @@ public partial class PlayerManager
     void UpdateUI()
     {
         var aim_rT = rects[(int)Rects.viseur];
-        aim_rT.anchorMin = aim_rT.anchorMax = mouse_pos;
+        aim_rT.anchorMin = aim_rT.anchorMax = GameManager.self.mouse_pos_norm;
     }
 }
