@@ -1141,14 +1141,38 @@ MonoBehaviour:
     value: {x: 0, y: 0, z: 0}
     old: {x: 0, y: 0, z: 0}
   grass_steps:
-  - {fileID: 8300000, guid: 98a2a1dc614c02440aad3d927c10d36d, type: 3}
-  - {fileID: 8300000, guid: 169ba3f1004a5964290b005a9d7eebfb, type: 3}
-  - {fileID: 8300000, guid: a84bea0b6f18eeb45be1a341ac4245a8, type: 3}
-  - {fileID: 8300000, guid: 22b94520b1b04144caca3c866635a5df, type: 3}
-  - {fileID: 8300000, guid: 90de1c9a9c53c0d41910d5086f175e6c, type: 3}
-  - {fileID: 8300000, guid: f155abcadadc0084dbac50f327d51fa3, type: 3}
-  - {fileID: 8300000, guid: 78c91701d8bb54442bef323c3b61c319, type: 3}
-  - {fileID: 8300000, guid: 9ec430322c69168499cc3cd3c198d49b, type: 3}
+  - {fileID: 8300000, guid: 3ebb443f52109f24080ae17c1c1b6ef1, type: 3}
+  - {fileID: 8300000, guid: 335143db71811594b8886ed15b72b4f3, type: 3}
+  - {fileID: 8300000, guid: d5adca09567ab284c9d3ea4b53b641da, type: 3}
+  - {fileID: 8300000, guid: a060ce7e0d5a9ac4d93315ff33f1c2e0, type: 3}
+  - {fileID: 8300000, guid: 2c5613e8e5ac6d34989b133e74f84db1, type: 3}
+  - {fileID: 8300000, guid: d26e4df57b313c34583947f53651e3c1, type: 3}
+  ice_steps:
+  - {fileID: 8300000, guid: bb398ba4148847d4eb5470e4a503d5b4, type: 3}
+  - {fileID: 8300000, guid: 984c14be8bc12b940b508ae7527d5ccd, type: 3}
+  - {fileID: 8300000, guid: 5479c60b41765b845b3651e8ca6d2c3a, type: 3}
+  - {fileID: 8300000, guid: 52c404629ca45e647b2f99dcb4b96185, type: 3}
+  - {fileID: 8300000, guid: 190431ee4c9a366488df5272cb7abb64, type: 3}
+  - {fileID: 8300000, guid: b111c43353ece5646aae5cbcc18fa73d, type: 3}
+  - {fileID: 8300000, guid: b8bca25581c3cbc44915b0856db1850f, type: 3}
+  - {fileID: 8300000, guid: 88b5f04d60c71e146bd90abc24c49023, type: 3}
+  - {fileID: 8300000, guid: 10cf6fe132d19e947af7c4a447eb47a2, type: 3}
+  - {fileID: 8300000, guid: c6f9b32671e53f74cae60ab9d023f6bf, type: 3}
+  - {fileID: 8300000, guid: e66ac4ab8fe2ad447b1b546d264f46af, type: 3}
+  - {fileID: 8300000, guid: 24e236c1225b135478015cbbd5def528, type: 3}
+  rock_steps:
+  - {fileID: 8300000, guid: a6dced9a1d4e1f24bbd876d114b7b4af, type: 3}
+  - {fileID: 8300000, guid: a6bc1754fa0f71c449a3a295d6891674, type: 3}
+  - {fileID: 8300000, guid: 1e90fb62baf355343813bc7013a48378, type: 3}
+  - {fileID: 8300000, guid: 2954d65174959ca43be3f69c38c02a1a, type: 3}
+  - {fileID: 8300000, guid: ea8d3b707a0adde4b963daa2a59167fe, type: 3}
+  - {fileID: 8300000, guid: 01e33287e8560c2499f3a7ea815123e4, type: 3}
+  water_steps:
+  - {fileID: 8300000, guid: 495a5a0871cd0db43bcbc478bdb38642, type: 3}
+  - {fileID: 8300000, guid: 073796df50445ac489b6a6723085cf3b, type: 3}
+  - {fileID: 8300000, guid: d8a449ad82ebf8642825163d174823c7, type: 3}
+  - {fileID: 8300000, guid: 3c666f3ca9af58b479c5bedcfad286bc, type: 3}
+  - {fileID: 8300000, guid: 0f84a4b54decacb4cbfb54b14b37b3a2, type: 3}
   clips_jump:
   - {fileID: 8300000, guid: e57f11b812aa4924b8370042c5e88065, type: 3}
   - {fileID: 8300000, guid: 05d3246246bcda94799f08e3aca90021, type: 3}

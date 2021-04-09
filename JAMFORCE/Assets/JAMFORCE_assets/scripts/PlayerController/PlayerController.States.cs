@@ -35,7 +35,42 @@ public partial class PlayerController : IOnStateMachine
                 {
                     AudioSource source = playerManager.sources[(int)PlayerManager.AudioSources.steps];
 
-                    source.clip = GameManager.self.grass_steps[Random.Range(0, GameManager.self.grass_steps.Length)];
+                    AudioClip GetClip(AudioClip[] clips)
+                        => source.clip = clips[Random.Range(0, clips.Length)];
+
+                    string mat = "";
+
+                    if (isGround && ground_hit.collider != null && ground_hit.collider.sharedMaterial != null)
+                        mat += ground_hit.collider.sharedMaterial.name;
+
+                    switch (mat)
+                    {
+                        case "rock":
+                            GetClip(GameManager.self.rock_steps);
+                            break;
+
+                        case "grass":
+                            GetClip(GameManager.self.grass_steps);
+                            break;
+
+                        case "ice":
+                            GetClip(GameManager.self.ice_steps);
+                            break;
+
+                        case "water":
+                            GetClip(GameManager.self.water_steps);
+                            break;
+
+                        case "nenuphar":
+                            break;
+
+                        case "nuage":
+                            break;
+
+                        case "crystal":
+                            break;
+                    }
+
                     source.Stop();
                     source.Play();
                 }
