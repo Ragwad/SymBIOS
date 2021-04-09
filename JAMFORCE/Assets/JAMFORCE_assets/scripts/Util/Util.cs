@@ -1,5 +1,15 @@
 ﻿using UnityEngine;
 
+public delegate void VoidFromVoid();
+public delegate void VoidFrom<T>(T a);
+public delegate void VoidFrom<T, U>(T a, U b);
+public delegate void VoidFrom<T, U, V>(T a, U b, V c);
+
+public delegate bool BoolFromVoid();
+public delegate bool BoolFrom<T>(T a);
+public delegate bool BoolFrom<T, U>(T a, U b);
+public delegate bool BoolFrom<T, U, V>(T a, U b, V c);
+
 public static partial class Util
 {
     public enum GamepadKeycodes

@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
+    path: 
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/JAMFORCE_assets/scenes/Home.unity
+    guid: 274cdb5b809c0f64391d383f0811f695
+  - enabled: 1
+    path: Assets/JAMFORCE_assets/scenes/Zero.unity
+    guid: d1961cb8792bbbd408eec56af1748208
   m_configObjects: {}

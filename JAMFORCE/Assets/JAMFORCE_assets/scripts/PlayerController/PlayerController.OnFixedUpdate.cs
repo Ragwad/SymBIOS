@@ -45,7 +45,7 @@ public partial class PlayerController
 
         if (isGround)
         {
-            move_axis = Quaternion.LookRotation(Vector3.forward, ground_hit.normal) * Vector2.right * playerManager.left_axis;
+            move_axis = Quaternion.LookRotation(Vector3.forward, ground_hit.normal) * Vector2.right * GameManager.self.left_axis;
 
             ground_dot = Vector2.Dot(playerManager.physic_grav_n, ground_hit.normal);
             slope_weight = Mathf.InverseLerp(json.slope_range_max, json.slope_range_min, ground_dot);
@@ -61,7 +61,7 @@ public partial class PlayerController
         }
         else
         {
-            move_axis = playerManager.grav_rot * Vector2.right * playerManager.left_axis;
+            move_axis = playerManager.grav_rot * Vector2.right * GameManager.self.left_axis;
 
             ground_dot = 1;
             slope_weight = 0;
@@ -77,8 +77,11 @@ public partial class PlayerController
                 break;
 
             case BaseStates.JumpDown:
-                if (playerManager.jump_hold && playerManager.rigidbody_lcl_vlc.y < 0)
+                if (lead_wind.value && playerManager.jump_hold && playerManager.rigidbody_lcl_vlc.y < 0)
+                {
                     animator.CrossFadeInFixedTime((int)BaseStates.Fly, 0, (int)Layers.Base);
+                    playerManager.animator.CrossFadeInFixedTime((int)PlayerManager.JellyStates.Jump, 0, (int)PlayerManager.Layers.Jelly);
+                }
                 else
                     goto case BaseStates.JumpUp;
                 break;

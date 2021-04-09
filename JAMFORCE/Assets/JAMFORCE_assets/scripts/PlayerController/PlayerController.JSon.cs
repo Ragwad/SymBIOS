@@ -12,9 +12,10 @@ public partial class PlayerController
 
         [Min(0)]
         public float
-            move_speed = 10, side_speed = 10, 
-            jump1_force = 20, jump2_force = 10, 
-            fly_speed = 1, fly_force = .1f, grav_force = 55, 
-            shoot_force = 15, shoot_lifetime_min = 10, shoot_lifetime_max = 15;
+            move_speed = 10, side_speed = 10,
+            jump1_force = 20, jump2_force = 10,
+            fly_speed = 1, fly_force = .1f, grav_force = 55,
+            shoot_force = 15, shoot_lifetime_min = 10, shoot_lifetime_max = 15,
+            wind_force = 5;
     }
 }

@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public partial class PlayerManager : MonoBehaviour
+public partial class PlayerManager : ControllerBehaviour
 {
-    [HideInInspector] public Animator animator;
     [HideInInspector] public new Rigidbody2D rigidbody;
     [HideInInspector] public new CapsuleCollider2D collider;
     [HideInInspector] public PlayerController player;
@@ -11,7 +10,8 @@ public partial class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        OnAwake();
+
         listener = transform.Find("AudioListener").GetComponent<AudioListener>();
         camera = transform.Find("PlayerCamera").GetComponent<Camera>();
         camera_pivot = camera.transform.Find("Pivot");
@@ -22,6 +22,8 @@ public partial class PlayerManager : MonoBehaviour
 
         InitUI();
         InitAudio();
+
+        JSon.Read("Player.settings", ref json);
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
