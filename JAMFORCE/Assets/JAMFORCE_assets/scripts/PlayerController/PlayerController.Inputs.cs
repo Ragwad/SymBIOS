@@ -13,6 +13,9 @@ public partial class PlayerController
 
     void UpdateInputs()
     {
+        if (GameManager.self.state_base != GameManager.BaseStates.Gameplay)
+            return;
+
         if (state_base == BaseStates.Power)
         {
             float aim_a = Vector2.SignedAngle(playerManager.physic_grav_n, playerManager.mouse_to);

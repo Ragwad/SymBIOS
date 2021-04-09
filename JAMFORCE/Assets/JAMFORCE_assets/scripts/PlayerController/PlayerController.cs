@@ -31,6 +31,8 @@ public partial class PlayerController : ControllerBehaviour
             playerManager.animator.CrossFadeInFixedTime(value ? (int)PlayerManager.BaseStates.Default : (int)PlayerManager.BaseStates.Aim, 0, (int)PlayerManager.Layers.Base);
             playerManager.animator.CrossFadeInFixedTime((int)PlayerManager.JellyStates.Switch, 0, (int)PlayerManager.Layers.Jelly);
         });
+
+        JSon.Read("PlayerMovement.settings", ref json);
     }
 
     //------------------------------------------------------------------------------------------------------------------------------

@@ -22,6 +22,8 @@ public partial class PlayerManager : ControllerBehaviour
 
         InitUI();
         InitAudio();
+
+        JSon.Read("Player.settings", ref json);
     }
 
     //------------------------------------------------------------------------------------------------------------------------------

@@ -5,7 +5,7 @@ public partial class PlayerManager
     [System.Serializable]
     public class Settings : JSon
     {
-        [SerializeField] float camera_height;
+        public float camera_height;
 
         public KeyCode 
             jump_keyboard = KeyCode.Space, jump_gamepad = (KeyCode)Util.GamepadKeycodes.A,

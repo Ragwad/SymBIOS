@@ -22,5 +22,8 @@ public partial class PlayerManager
 
         jump_down = Input.GetKeyDown(json.jump_keyboard) || Input.GetKeyDown(json.jump_gamepad);
         jump_hold = Input.GetKey(json.jump_keyboard) || Input.GetKey(json.jump_gamepad);
+
+        if (GameManager.self.state_base != GameManager.BaseStates.Gameplay)
+            return;
     }
 }

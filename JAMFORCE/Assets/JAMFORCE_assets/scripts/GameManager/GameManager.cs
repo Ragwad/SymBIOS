@@ -23,6 +23,7 @@ public partial class GameManager : ControllerBehaviour
     [HideInInspector] public float _fixedDeltaTime, _deltaTime;
 
     [Header("~@ Game @~")]
+    [Range(0, 1)] [SerializeField] float timeScale = 1;
     public Settings json;
 
     //------------------------------------------------------------------------------------------------------------------------------
@@ -38,10 +39,15 @@ public partial class GameManager : ControllerBehaviour
         }
 
         self = this;
+        DontDestroyOnLoad(gameObject);
 
         Physics2D.queriesHitTriggers = false;
 
         InitUI();
+        InitAudio();
+        InitScenes();
+
+        JSon.Read("Game.settings", ref json);
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
@@ -67,5 +73,6 @@ public partial class GameManager : ControllerBehaviour
             Time.timeScale = Time.timeScale > .5f ? .2f : 1;
 
         UpdateInputs();
+        UpdateUI();
     }
 }

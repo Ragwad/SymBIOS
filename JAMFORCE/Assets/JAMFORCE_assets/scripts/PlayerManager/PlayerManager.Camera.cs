@@ -24,7 +24,7 @@ public partial class PlayerManager
         targetpos_sv2.SmoothDamp(camera_smooth.x, camera_smooth.y, Time.deltaTime);
 
         camera_pos += (Vector3)targetpos_sv2.value - camera_pivot.position;
-        camera_pos.y = camera_height;
+        camera_pos.y = json.camera_height;
 
         camera_grav_a = Vector2.SignedAngle(Vector2.up, LevelManager.self.GetGravAtPoint(camera_pos));
         camera_grav_a = Mathf.MoveTowardsAngle(camera_grav_a, 0, Mathf.Min(Mathf.Abs(Mathf.Abs(camera_grav_a) - 180), camera_clamp));
