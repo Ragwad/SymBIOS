@@ -99,7 +99,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920153342851828407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 40}
+  m_LocalPosition: {x: 0, y: -3.78, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6393557741537165745}
@@ -481,6 +481,12 @@ MonoBehaviour:
   jump_hold: 0
   mouse_pos: {x: 0, y: 0}
   mouse_to: {x: 0, y: 0}
+  json:
+    name: 
+    jump_keyboard: 32
+    jump_gamepad: 330
+    switch_keyboard: 97
+    switch_gamepad: 334
   physic_grav_a: 0
   rigidbody_pos: {x: 0, y: 0}
   rigidbody_vlc: {x: 0, y: 0}
@@ -492,10 +498,6 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   collider: {fileID: 0}
   player: {fileID: 0}
-  json:
-    name: 
-    jump_gamepad: 330
-    jump_keyboard: 32
 --- !u!1 &3244341932241606304
 GameObject:
   m_ObjectHideFlags: 0

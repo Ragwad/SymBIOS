@@ -7,6 +7,8 @@ public partial class PlayerManager
     [HideInInspector] public Transform camera_pivot, player_pivot;
 
     [Header("~@ Camera @~")]
+    [SerializeField] Transform camera_height; 
+
     [Tooltip("damp, spring")] [SerializeField] Vector2 camera_smooth = new Vector2(.1f, 2);
     [HideInInspector] public SmoothVector2 targetpos_sv2 = new SmoothVector2();
 
@@ -29,7 +31,8 @@ public partial class PlayerManager
         camera_grav_a = Mathf.MoveTowardsAngle(camera_grav_a, 0, Mathf.Min(Mathf.Abs(Mathf.Abs(camera_grav_a) - 180), camera_clamp));
 
         camera_rot = Quaternion.Euler(0, 0, camera_grav_a);
-        camera.transform.SetPositionAndRotation(camera_pos, camera_rot);
+        
+        camera.transform.SetPositionAndRotation(new Vector3(camera_pos.x,camera_height.position.y, camera_pos.z), camera_rot);
 
         float a = Vector3.Angle(Vector3.forward, camera_rot * Vector3.forward);
         float tan = Mathf.Tan(a * Mathf.Deg2Rad);
