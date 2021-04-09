@@ -10,15 +10,12 @@ public partial class PlayerManager
 
     void UpdateInputs()
     {
-        mouse_to = camera.WorldToViewportPoint(targetpos_sv2.target);
+        mouse_to = GameManager.self.mouse_pos_norm - (Vector2)camera.WorldToViewportPoint(targetpos_sv2.target);
 
         if (mouse_to.sqrMagnitude > 0)
         {
-            mouse_to.x *= Screen.width;
-            mouse_to.y *= Screen.height;
-
             if (mouse_to.sqrMagnitude > 1)
-                mouse_to = Vector2.ClampMagnitude(GameManager.self.mouse_pos_norm - mouse_to, 1);
+                mouse_to = Vector2.ClampMagnitude(mouse_to, 1);
             else
                 mouse_to.Normalize();
         }
