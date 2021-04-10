@@ -8,7 +8,7 @@ public partial class GameManager
     [Header("~@ Audio @~")]
     [SerializeField] AudioMixer audioMixer;
     [SerializeField] OnValue<Vector3> audio_volumes;
-    public AudioClip[] grass_steps, clips_jump, clips_opencape;
+    public AudioClip[] grass_steps, ice_steps, rock_steps, water_steps, clips_jump, clips_opencape;
 
     //------------------------------------------------------------------------------------------------------------------------------
 
